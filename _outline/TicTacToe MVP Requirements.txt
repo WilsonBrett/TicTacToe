@@ -15,27 +15,37 @@ onpage load modal pops up and takes two user names with text boxes
 	cancel button to quit.
 	load instructions to enter player names
 	continue button can be clicked to start the game:
-		if player1 && player2 aren't blank
-			store the usernames to variables
+	
+	declare global person variables, p1 and p2
+	declare gloabl box variables to store player icons
+		if player1 && player2 input boxes aren't blank
+			call to make people
+				pass values of the input boxes to the function (player 1 first)
 			hide the modal
-			assign icons, x to player one and o to player two
-			assign the turn variable to player one 
 			load the board by board.display
-				player names will display
+				set player1 p tag to display p1.name
+				set player2 p tag to display p2.name
 				exit button will display
 					results stored to local storage (feature)
-			establish variables to hold values of the boxes	(b1)	
+					board display none.
+					add goodbye message in an h1	
 			
 			attach click event listeners to cells on the board
-				//function will reference the turn variable and the player icon to set the value of the box
+				//set value of box
 					if evt.tgt.val is blank then
-						if turn variable is player1 then evt.tgt.val will equal player1.icon
-						else then evt.tgt.val will equal player2.icon
+						if p1.turn == true
+							evt.tgt.val = p1.icon;
+						else
+							evt.tgt.val p2.icon
+						//toggle turn
+							var a = p1.turn
+							p1.turn = p2.turn
+							p2.turn = a;
 						set the evt.tgt to disable or read only
 						call to the check winner function
-						toggle turn variable
 					else
 						alert(box.val already assigned)
+
 			instruct player one to move
 		else if player is blank
 			player 1 is blank message to user using p tag.display color red
@@ -62,10 +72,8 @@ onpage load modal pops up and takes two user names with text boxes
 	
 	makePeople(player1.name, player2.name) {
 		var p1 = new Person(player1.name, "X", True);
-		
 		var p2 = new Person(player2.name, "O", False);
 	}
-	
 	Person(pName, i, t) {
 		name: pName;
 		icon: i;
