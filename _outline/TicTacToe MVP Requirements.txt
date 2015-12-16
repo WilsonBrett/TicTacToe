@@ -1,0 +1,74 @@
+A welcome modal needs to greet the user
+User must click start a new game button
+User must enter player names in text boxes on next screen
+Names must appear on board
+Boxes need to load so user can click in them
+Boxes need to light up on hover for the user before a click
+User needs to be able to click a box
+Boxes need to be able to record and display a value of X or O
+After a box is clicked the game needs to check for a winner
+A message needs to appear to indicate which winner has won or if a tie has been reached
+User must click one of two buttons to exit the game or start a new game
+
+//pseudo code
+onpage load modal pops up and takes two user names with text boxes
+	cancel button to quit.
+	load instructions to enter player names
+	continue button can be clicked to start the game:
+		if player1 && player2 aren't blank
+			store the usernames to variables
+			hide the modal
+			assign icons, x to player one and o to player two
+			assign the turn variable to player one 
+			load the board by board.display
+				player names will display
+				exit button will display
+					results stored to local storage (feature)
+			establish variables to hold values of the boxes	(b1)	
+			
+			attach click event listeners to cells on the board
+				//function will reference the turn variable and the player icon to set the value of the box
+					if evt.tgt.val is blank then
+						if turn variable is player1 then evt.tgt.val will equal player1.icon
+						else then evt.tgt.val will equal player2.icon
+						set the evt.tgt to disable or read only
+						call to the check winner function
+						toggle turn variable
+					else
+						alert(box.val already assigned)
+			instruct player one to move
+		else if player is blank
+			player 1 is blank message to user using p tag.display color red
+		else
+			player 2 is blank message to user using p tag.display color red
+			
+	
+	function checkWinner(last player to click icon)
+		switch(b1)
+		case 111:
+		case: 111,000
+		case: 111,000,000
+		case: 1,001,001
+		case: 10,010,010
+		case: 100,100,100
+		case: 1,010,100
+		case: 100,010,001
+		
+		if one is true
+			display the winner by prepending a p tag somewhere above the board
+			make the board boxes disable or read only
+			show a button to start a new game
+				if clicked load original modal to accept new usernames
+	
+	makePeople(player1.name, player2.name) {
+		var p1 = new Person(player1.name, "X", True);
+		
+		var p2 = new Person(player2.name, "O", False);
+	}
+	
+	Person(pName, i, t) {
+		name: pName;
+		icon: i;
+		turn: t;
+		
+	}
