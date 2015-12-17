@@ -10,6 +10,10 @@ $(function() {
 	//boolean to store if user wants to play or not
 	var play;	
 	
+	//to record names from user
+	var name1;
+	var name2;
+	
 	//variables to store person instances
 	var person1, person2;
 	
@@ -24,7 +28,7 @@ $(function() {
 	var p8;
 	var p9;
 	
-	var winner:
+	var winner;
 	
 	//launch initial newgame setup
 	$("#newGameBtn").click(newGame);
@@ -33,10 +37,13 @@ $(function() {
 		var conf = confirm("Are you sure you want to start a new game? \nBoard will be reset.");
 		if (conf) {
 			$(".box p").empty();
-			var name1 = prompt("Please enter player one's name:");
-			var name2 = prompt("Please enter player two's name:");
-			launchSetup(name1,name2);
+			setNames();
 		}
+	}
+	function setNames() {
+		name1 = prompt("Please enter player one's name:");
+		name2 = prompt("Please enter player two's name:");
+		launchSetup(name1,name2);
 	}
 	
 	function launchSetup(n1, n2) {
@@ -50,7 +57,7 @@ $(function() {
 			person2 = new Person(n2,"O",false);
 			
 			//adds click event listeners to div boxes on the grid.  Will launch clicked function.
-			$('.box').click(clicked);
+			$(".box p").click(clicked);
 			
 			//provides handle into each div box in the grid.  Mainly used in the check winner function.
 			p1 = $("#b1 p");
@@ -72,8 +79,7 @@ $(function() {
 	
 	function clicked(evt) {
 		var p = $(evt.target);
-		
-		if(p.text() === "" || p.text() === null) {
+		if(p.text() === "") {
 			
 			//assign X or O from player objects to p tag within boxes
 			if(person1.turn) {
@@ -106,58 +112,58 @@ $(function() {
 		if(p1.text() === "X" && p2.text() === "X" && p3.text() === "X") {
 			winner = person1.playerName;
 			alert(winner + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 			
 		} else if (p1.text() === "O" && p2.text() === "O" && p3.text() === "O") {
 			alert(person2.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if(p4.text() === "X" && p5.text() === "X" && p6.text() === "X") {
 			alert(person1.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if (p4.text() === "O" && p5.text() === "O" && p6.text() === "O") {
 			alert(person2.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if(p7.text() === "X" && p8.text() === "X" && p9.text() === "X") {
 			alert(person1.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if (p7.text() === "O" && p8.text() === "O" && p9.text() === "O") {
 			alert(person2.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if(p1.text() === "X" && p4.text() === "X" && p7.text() === "X") {
 			alert(person1.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if (p1.text() === "O" && p4.text() === "O" && p7.text() === "O") {
 			alert(person2.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if(p2.text() === "X" && p5.text() === "X" && p8.text() === "X") {
 			alert(person1.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if (p2.text() === "O" && p5.text() === "O" && p8.text() === "O") {
 			alert(person2.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if(p3.text() === "X" && p6.text() === "X" && p9.text() === "X") {
 			alert(person1.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if (p3.text() === "O" && p6.text() === "O" && p9.text() === "O") {
 			alert(person2.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if(p1.text() === "X" && p5.text() === "X" && p9.text() === "X") {
 			alert(person1.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if (p1.text() === "O" && p5.text() === "O" && p9.text() === "O") {
 			alert(person2.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if(p3.text() === "X" && p5.text() === "X" && p7.text() === "X") {
 			alert(person1.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else if (p3.text() === "O" && p5.text() === "O" && p7.text() === "O") {
 			alert(person2.playerName + " has won!");
-			$('.box').unbind('click',clicked);
+			$('.box p').unbind('click',clicked);
 		} else {
 			//code to check for a tie - all boxes filled return tie
 			if(p1.text() && p2.text() && p3.text() && p4.text() && p5.text() && p6.text() && p7.text() && p8.text() && p9.text()) {
 				alert("It's a tie!");	
-				$('.box').unbind('click',clicked);
+				$('.box p').unbind('click',clicked);
 			} //closes interior if statement
 		}//closes the outer if
 	}//closes check winner
