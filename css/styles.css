@@ -1,0 +1,40 @@
+body {
+	font-size: 16px;
+	background-color: lightgrey;
+}
+h1 {
+	text-align: center;
+	margin: 1em auto .5em;
+	
+}
+p#vs {
+	text-align: center;
+	color: white;
+	font-weight: 700;
+	background-color: black;
+	width: 25%;
+	padding: 1em 0;
+	margin: 0 auto 2em;
+	
+}
+.box {
+	position: relative;
+	background-color: lightgreen;
+	width: 33%;
+	height: 100px;
+	color: black;
+	border: solid 1px black;
+	padding: 0;
+}
+.box p {
+	position: absolute;
+	top: 15%;
+	text-align: center;
+	font-size: 3em;
+	width: 100%;
+	margin: 0;
+}
+.box:hover {
+	border-color: yellow;
+	background-color: lightyellow;
+}

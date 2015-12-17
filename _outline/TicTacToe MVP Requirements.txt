@@ -12,20 +12,19 @@ User must click one of two buttons to exit the game or start a new game
 
 //pseudo code
 onpage load modal pops up and takes two user names with text boxes
+	two confirm boxes that capture the text (name1 and name2);
 	cancel button to quit.
 	load instructions to enter player names
 	continue button can be clicked to start the game:
 	
 	declare global person variables, p1 and p2
-	declare gloabl box variables to store player icons
 		if player1 && player2 input boxes aren't blank
-			call to make people
-				pass values of the input boxes to the function (player 1 first)
 			hide the modal
-			load the board by board.display
-				set player1 p tag to display p1.name
-				set player2 p tag to display p2.name
-				exit button will display
+			show board
+			show whosplaying
+			calls to make people and set to global people vars
+				pass values of the input boxes to the function (player 1 first)
+				feature - exit button will display
 					results stored to local storage (feature)
 					board display none.
 					add goodbye message in an h1	
