@@ -1,7 +1,19 @@
 $(function() {
-	var whosPlaying = $('#vs').hide();
-	var board = $('#board').hide();
-	var play = confirm("Would you like to play tic tac toe?");
+	//$('#newGame').hide();
+	
+	//player names above board
+	var whosPlaying = $("#vs");
+	
+	//grid of divs and p tags
+	var board;
+	
+	//boolean to store if user wants to play or not
+	var play;	
+	
+	//variables to store person instances
+	var person1, person2;
+	
+	//variables to provide handles into grid p tags
 	var p1;
 	var p2;
 	var p3;
@@ -11,27 +23,26 @@ $(function() {
 	var p7;
 	var p8;
 	var p9;
-	var person1, person2;
-	setNames();
 	
-	function setNames() {
-		if (play) {
+	var winner:
+	
+	//launch initial newgame setup
+	$("#newGameBtn").click(newGame);
+
+	function newGame() {
+		var conf = confirm("Are you sure you want to start a new game? \nBoard will be reset.");
+		if (conf) {
+			$(".box p").empty();
 			var name1 = prompt("Please enter player one's name:");
 			var name2 = prompt("Please enter player two's name:");
 			launchSetup(name1,name2);
-		} else {
-		//do something
 		}
 	}
-
+	
 	function launchSetup(n1, n2) {
 		if(n1 && n2) {
 			
-			//shows the grid
-			board.show();
-			
 			//shows player names above the board
-			whosPlaying.show();
 			whosPlaying.text(n1 + " vs. " + n2);
 			
 			//instantiates players (name, icon, turn);
@@ -42,15 +53,15 @@ $(function() {
 			$('.box').click(clicked);
 			
 			//provides handle into each div box in the grid.  Mainly used in the check winner function.
-			p1 = $("#p1 p");
-			p2 = $("#p2 p");
-			p3 = $("#p3 p");
-			p4 = $("#p4 p");
-			p5 = $("#p5 p");
-			p6 = $("#p6 p");
-			p7 = $("#p7 p");
-			p8 = $("#p8 p");
-			p9 = $("#p9 p");
+			p1 = $("#b1 p");
+			p2 = $("#b2 p");
+			p3 = $("#b3 p");
+			p4 = $("#b4 p");
+			p5 = $("#b5 p");
+			p6 = $("#b6 p");
+			p7 = $("#b7 p");
+			p8 = $("#b8 p");
+			p9 = $("#b9 p");
 	
 		} else {
 			//if a player name is ommitted please go back and fill them in.
@@ -88,75 +99,68 @@ $(function() {
 		this.icon = i;
 		this.turn = t;
 	}
-	
-	function checkWinner() {
-		/*
-		console.log(p1.text());
-		console.log(p2.text());
-		console.log(p3.text());
-		console.log(p4.text());
-		console.log(p5.text());
-		console.log(p6.text());
-		console.log(p7.text());
-		console.log(p8.text());
-		console.log(p9.text());
-		*/
+	function setLog() {
 		
-		if((p1.text() && p2.text()) && (p2.children().text() === p3.children().text())) {
-			if(p1.children().text === "X") {
-				alert(person1.playerName + " has won!");
-			} else {
-				alert(person2.playerName + " has won!");
-			}
-		}
-		} else if((p4.children().text() === p5.children().text()) && (p5.children().text() === p6.children().text())) {
-			if(p4.children().text === "X") {
-				alert(person1.playerName + " has won!");
-			} else {
-				alert(person2.playerName + " has won!");
-			}
-		} else if((p7.children().text() === p8.children().text()) && (p8.children().text() === p9.children().text())) {
-			if(p7.children().text === "X") {
-				alert(person1.playerName + " has won!");
-			} else {
-				alert(person2.playerName + " has won!");
-			}
-		} else if((p1.children().text() === p4.children().text()) && (p4.children().text() === p7.children().text())) {
-			if(p1.children().text === "X") {
-				alert(person1.playerName + " has won!");
-			} else {
-				alert(person2.playerName + " has won!");
-			}
-		} else if((p2.children().text() === p5.children().text()) && (p5.children().text() === p8.children().text())) (
-			if(p2.children().text === "X") {
-				alert(person1.playerName + " has won!");
-			} else {
-				alert(person2.playerName + " has won!");
-			}
-		) else if((p3.children().text() === p6.children().text()) && (p6.children().text() === p9.children().text())) {
-			if(p3.children().text === "X") {
-				alert(person1.playerName + " has won!");
-			} else {
-				alert(person2.playerName + " has won!");
-			}
-		} else if((p1.children().text() === p5.children().text()) && (p5.children().text() === p9.children().text())) {
-			if(p1.children().text === "X") {
-				alert(person1.playerName + " has won!");
-			} else {
-				alert(person2.playerName + " has won!");
-			}
-		} else if((p3.children().text() === p5.children().text()) && (p5.children().text() === p7.children().text())) {
-			if(p3.children().text === "X") {
-				alert(person1.playerName + " has won!");
-			} else {
-				alert(person2.playerName + " has won!");
-			}
+	}
+	function checkWinner() {
+		if(p1.text() === "X" && p2.text() === "X" && p3.text() === "X") {
+			winner = person1.playerName;
+			alert(winner + " has won!");
+			$('.box').unbind('click',clicked);
+			
+		} else if (p1.text() === "O" && p2.text() === "O" && p3.text() === "O") {
+			alert(person2.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if(p4.text() === "X" && p5.text() === "X" && p6.text() === "X") {
+			alert(person1.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if (p4.text() === "O" && p5.text() === "O" && p6.text() === "O") {
+			alert(person2.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if(p7.text() === "X" && p8.text() === "X" && p9.text() === "X") {
+			alert(person1.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if (p7.text() === "O" && p8.text() === "O" && p9.text() === "O") {
+			alert(person2.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if(p1.text() === "X" && p4.text() === "X" && p7.text() === "X") {
+			alert(person1.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if (p1.text() === "O" && p4.text() === "O" && p7.text() === "O") {
+			alert(person2.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if(p2.text() === "X" && p5.text() === "X" && p8.text() === "X") {
+			alert(person1.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if (p2.text() === "O" && p5.text() === "O" && p8.text() === "O") {
+			alert(person2.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if(p3.text() === "X" && p6.text() === "X" && p9.text() === "X") {
+			alert(person1.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if (p3.text() === "O" && p6.text() === "O" && p9.text() === "O") {
+			alert(person2.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if(p1.text() === "X" && p5.text() === "X" && p9.text() === "X") {
+			alert(person1.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if (p1.text() === "O" && p5.text() === "O" && p9.text() === "O") {
+			alert(person2.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if(p3.text() === "X" && p5.text() === "X" && p7.text() === "X") {
+			alert(person1.playerName + " has won!");
+			$('.box').unbind('click',clicked);
+		} else if (p3.text() === "O" && p5.text() === "O" && p7.text() === "O") {
+			alert(person2.playerName + " has won!");
+			$('.box').unbind('click',clicked);
 		} else {
 			//code to check for a tie - all boxes filled return tie
-		}
-
-	}
-	
+			if(p1.text() && p2.text() && p3.text() && p4.text() && p5.text() && p6.text() && p7.text() && p8.text() && p9.text()) {
+				alert("It's a tie!");	
+				$('.box').unbind('click',clicked);
+			} //closes interior if statement
+		}//closes the outer if
+	}//closes check winner
 });
 
 

@@ -15,7 +15,7 @@ p#vs {
 	width: 25%;
 	padding: 1em 0;
 	margin: 0 auto 2em;
-	
+	border-radius: 5px;
 }
 .box {
 	position: relative;
@@ -40,4 +40,24 @@ p#vs {
 .box:hover {
 	border-color: yellow;
 	background-color: lightyellow;
+}
+input#newGameBtn {
+	display: block;
+	background-color: black;
+	color: white;
+	margin: 2em auto;
+	border: solid 1px white;
+	border-style: outset;
+	height: 2em;
+}
+input#newGameBtn:hover {
+	background-color: blue;
+}
+#log {
+	background-color: rgb(252, 255, 205);
+	font-size: 2em;
+	font-weight: 700;
+	min-height: 200px;
+	border: solid 1px black;
+	text-align: center;
 }
