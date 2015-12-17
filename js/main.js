@@ -34,7 +34,7 @@ $(function() {
 	$("#newGameBtn").click(newGame);
 
 	function newGame() {
-		var conf = confirm("Are you sure you want to start a new game? \nBoard will be reset.");
+		var conf = confirm("Are you sure you want to start a new game? \n\n\t\t\tBoard will be reset.");
 		if (conf) {
 			$(".box p").empty();
 			setNames();
@@ -42,39 +42,46 @@ $(function() {
 	}
 	function setNames() {
 		name1 = prompt("Please enter player one's name:");
-		name2 = prompt("Please enter player two's name:");
-		launchSetup(name1,name2);
+		if(name1 === null) {
+			return false;
+		} else if (name1 === "") {
+			alert("You must enter a value for player one.");
+			setNames();
+			return false;
+		}
+		
+		name2 = prompt("Please enter player two's name.")
+		if(name2 === null) {
+			return false;
+		} else if (name2 === "") {
+			alert("You must enter a value for player two.");
+			setNames();
+			return false;
+		}
+		launchSetup(name1, name2);
 	}
 	
 	function launchSetup(n1, n2) {
-		if(n1 && n2) {
-			
-			//shows player names above the board
-			whosPlaying.text(n1 + " vs. " + n2);
-			
-			//instantiates players (name, icon, turn);
-			person1 = new Person(n1,"X",true);
-			person2 = new Person(n2,"O",false);
-			
-			//adds click event listeners to div boxes on the grid.  Will launch clicked function.
-			$(".box p").click(clicked);
-			
-			//provides handle into each div box in the grid.  Mainly used in the check winner function.
-			p1 = $("#b1 p");
-			p2 = $("#b2 p");
-			p3 = $("#b3 p");
-			p4 = $("#b4 p");
-			p5 = $("#b5 p");
-			p6 = $("#b6 p");
-			p7 = $("#b7 p");
-			p8 = $("#b8 p");
-			p9 = $("#b9 p");
-	
-		} else {
-			//if a player name is ommitted please go back and fill them in.
-			alert("Please go back and fill in the names of the players one and two.");
-			setNames();
-		}
+		//shows player names above the board
+		whosPlaying.text(n1 + " vs. " + n2);
+		
+		//instantiates players (name, icon, turn);
+		person1 = new Person(n1,"X",true);
+		person2 = new Person(n2,"O",false);
+		
+		//adds click event listeners to div boxes on the grid.  Will launch clicked function.
+		$(".box p").click(clicked);
+		
+		//provides handle into each div box in the grid.  Mainly used in the check winner function.
+		p1 = $("#b1 p");
+		p2 = $("#b2 p");
+		p3 = $("#b3 p");
+		p4 = $("#b4 p");
+		p5 = $("#b5 p");
+		p6 = $("#b6 p");
+		p7 = $("#b7 p");
+		p8 = $("#b8 p");
+		p9 = $("#b9 p");
 	}
 	
 	function clicked(evt) {

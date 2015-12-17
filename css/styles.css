@@ -4,7 +4,9 @@ body {
 }
 h1 {
 	text-align: center;
-	margin: 1em auto .5em;
+	margin: .5em auto;
+	font-family: chewy, sans-serif;
+	font-size: 4em;
 	
 }
 p#vs {
@@ -49,6 +51,7 @@ input#newGameBtn {
 	border: solid 1px white;
 	border-style: outset;
 	height: 2em;
+	font-family: helvetica, sans-serif;
 }
 input#newGameBtn:hover {
 	background-color: blue;
