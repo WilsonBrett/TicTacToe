@@ -27,7 +27,8 @@ $(function() {
 	var p9;
 	
 	var winner;
-	var gameCount = 0;
+	var gameCount;
+	localStorage.getItem("GameCount") ? gameCount=localStorage.getItem("GameCount") : gameCount = 0;
 	
 	//launch initial newgame setup
 	$("#newGameBtn").click(newGame);
@@ -200,10 +201,12 @@ $(function() {
 			var lsLog = localStorage.getItem("GameLog");
 			var msg = "<p>Game " + g + " winner: " + w + "!</p>"; 
 			localStorage.setItem("GameLog", msg + lsLog);
+			localStorage.setItem("GameCount",g);
 			$("#log").html(localStorage.getItem("GameLog"));
 		} else {
 			var msg = "<p>Game " + g + " winner: " + w + "!</p>";;
 			localStorage.setItem("GameLog", msg);
+			localStorage.setItem("GameCount",g);
 			$("#log").html(localStorage.getItem("GameLog"));
 		}
 		//console.log();
