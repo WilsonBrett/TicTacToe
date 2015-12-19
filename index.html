@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <!--changes IE rendering engine to edge-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!--The responsive tag that is needed for all mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!--Bootstrap CDN link(or just link to the downloaded .min.css file)-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"><!-- integrity="sha384-1q8mTJOASx8j1Au				+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" (chrome blocking the attributes)-->
+  
+  <!--Icons link to fontawesome-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  
+  <!--Google font-->
+  <link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
+  
+  <!--My CSS-->
+  <link href="css/styles.css" rel="stylesheet">
+  
+  <title>Tic Tac Toe</title>
+  <noscript>You must turn on javascript to use this application.</noscript>
+</head>
+<body>
+	  <h1>Tic Tac Toe</h1>
+	  <p id="vs"></p>
+	  <input id="newGameBtn" value="> New Game <" type="button">
+	  <section id="board" class="container">
+		  <div class="row">
+			  <div class="col-md-offset-3 col-md-6">
+				  <div class="row">
+					  <div id="b1" class="col-md-4 box"><p></p></div>
+					  <div id="b2" class="col-md-4 box"><p></p></div>
+					  <div id="b3" class="col-md-4 box"><p></p></div>
+				  </div>
+				  <div class="row">
+					  <div id="b4" class="col-md-4 box"><p></p></div>
+					  <div id="b5" class="col-md-4 box"><p></p></div>
+					  <div id="b6" class="col-md-4 box"><p></p></div>
+				  </div>
+				  <div class="row">
+					  <div id="b7" class="col-md-4 box"><p></p></div>
+					  <div id="b8" class="col-md-4 box"><p></p></div>
+					  <div id="b9" class="col-md-4 box"><p></p></div>
+				  </div>
+			  </div>
+			  <div id="log" class="col-md-3">
+			  </div>
+		  </div>
+	  </section>
+  
+  <!--jquery - Bootstrap needs this-->
+  <!--<script src="../assets and libs/jquery-2.1.4.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  
+  <!--Bootstrap js file (or just link to the downloaded .min.js file)-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
+  <!--integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  
+  <!--My js file-->
+  <script src="js/main.js"></script>
+</body>
